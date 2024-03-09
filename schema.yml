@@ -1,0 +1,449 @@
+openapi: 3.0.3
+info:
+  title: Сервис уведомлений
+  version: 1.0.0
+  description: Сервис управления рассылками и получения статистики через API и административный
+    интерфейс.
+paths:
+  /api/clients/:
+    get:
+      operationId: api_clients_list
+      description: Вьюсэт для эндпоинтов связанных с клиентами.
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Client'
+          description: ''
+    post:
+      operationId: api_clients_create
+      description: Вьюсэт для эндпоинтов связанных с клиентами.
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Client'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Client'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+          description: ''
+  /api/clients/{id}/:
+    put:
+      operationId: api_clients_update
+      description: Вьюсэт для эндпоинтов связанных с клиентами.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Клиент.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Client'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Client'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+          description: ''
+    patch:
+      operationId: api_clients_partial_update
+      description: Вьюсэт для эндпоинтов связанных с клиентами.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Клиент.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedClient'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedClient'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedClient'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+          description: ''
+    delete:
+      operationId: api_clients_destroy
+      description: Вьюсэт для эндпоинтов связанных с клиентами.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Клиент.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/mailings/:
+    get:
+      operationId: api_mailings_list
+      description: Вьюсэт для эндпоинтов связанных с рассылками.
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Mailing'
+          description: ''
+    post:
+      operationId: api_mailings_create
+      description: Вьюсэт для эндпоинтов связанных с рассылками.
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mailing'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Mailing'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Mailing'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mailing'
+          description: ''
+  /api/mailings/{id}/:
+    put:
+      operationId: api_mailings_update
+      description: Вьюсэт для эндпоинтов связанных с рассылками.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Рассылка.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mailing'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Mailing'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Mailing'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mailing'
+          description: ''
+    patch:
+      operationId: api_mailings_partial_update
+      description: Вьюсэт для эндпоинтов связанных с рассылками.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Рассылка.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMailing'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedMailing'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedMailing'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mailing'
+          description: ''
+    delete:
+      operationId: api_mailings_destroy
+      description: Вьюсэт для эндпоинтов связанных с рассылками.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Рассылка.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/mailings/{id}/detailed-statistics/:
+    get:
+      operationId: api_mailings_detailed_statistics_retrieve
+      description: Вьюсэт для эндпоинтов связанных с рассылками.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Рассылка.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mailing'
+          description: ''
+  /api/mailings/overall-statistics/:
+    get:
+      operationId: api_mailings_overall_statistics_retrieve
+      description: Вьюсэт для эндпоинтов связанных с рассылками.
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mailing'
+          description: ''
+components:
+  schemas:
+    Client:
+      type: object
+      description: Сериализатор клиентов.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        phone_number:
+          type: integer
+          maximum: 79999999999
+          minimum: 70000000000
+          format: int64
+          title: Номер телефона
+        mobile_operator_code:
+          type: integer
+          readOnly: true
+          title: Код мобильного оператора
+        tag:
+          $ref: '#/components/schemas/Tag'
+      required:
+      - id
+      - mobile_operator_code
+      - phone_number
+      - tag
+    Filter:
+      type: object
+      description: Сериализатор фильтров.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        mobile_operator_code:
+          type: integer
+          title: Код мобильного оператора
+        tag:
+          $ref: '#/components/schemas/Tag'
+      required:
+      - id
+      - mobile_operator_code
+      - tag
+    Mailing:
+      type: object
+      description: Сериализатор рассылок.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        start_datetime:
+          type: string
+          format: date-time
+          title: Дата и время начала
+        end_datetime:
+          type: string
+          format: date-time
+          title: Дата и время окончания
+        message_text:
+          type: string
+          title: Текст сообщения
+        filter:
+          $ref: '#/components/schemas/Filter'
+      required:
+      - end_datetime
+      - filter
+      - id
+      - message_text
+      - start_datetime
+    PatchedClient:
+      type: object
+      description: Сериализатор клиентов.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        phone_number:
+          type: integer
+          maximum: 79999999999
+          minimum: 70000000000
+          format: int64
+          title: Номер телефона
+        mobile_operator_code:
+          type: integer
+          readOnly: true
+          title: Код мобильного оператора
+        tag:
+          $ref: '#/components/schemas/Tag'
+    PatchedMailing:
+      type: object
+      description: Сериализатор рассылок.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        start_datetime:
+          type: string
+          format: date-time
+          title: Дата и время начала
+        end_datetime:
+          type: string
+          format: date-time
+          title: Дата и время окончания
+        message_text:
+          type: string
+          title: Текст сообщения
+        filter:
+          $ref: '#/components/schemas/Filter'
+    Tag:
+      type: object
+      description: Сериализатор тэгов.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Название
+          maxLength: 50
+      required:
+      - id
+      - name
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
